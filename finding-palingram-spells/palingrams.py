@@ -3,7 +3,8 @@
 import load_dictionnary
 
 def main():
-    word_list = load_dictionnary.load("liste.de.mots.francais.frgut.txt")
+    """Main function"""
+    word_list = load_dictionnary.load("2of4brif.txt")
     palingrams_list = []
 
     for word in word_list:
@@ -14,7 +15,8 @@ def main():
                     palingrams_list.append(word[i::-1] + ' ' + word)
                 if word[i::] in word_list and word[i::-1] == word[:i+1:]:
                     palingrams_list.append(word + ' ' + word[i::-1])
-    print(palingrams_list)
+    sorted(palingrams_list, key=str.lower)
+    print(*palingrams_list, sep="\n")
     
-if __name_ == "__main__":
+if __name__ == "__main__":
     main()
