@@ -7,5 +7,5 @@ for word in word_list:
     if len(xords) > 1 and word == word[::-1]:
         pali_list.append(word)
 
-print('The dictionnary contains {s} palindromes'.format(len(pali_list))
+print('The dictionnary contains {} palindromes'.format(len(pali_list)))
 print(pali_list)
