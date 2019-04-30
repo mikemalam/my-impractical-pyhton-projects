@@ -8,4 +8,4 @@ for word in word_list:
         pali_list.append(word)
 
 print('The dictionnary contains {} palindromes'.format(len(pali_list)))
-print(pali_list)
+print(*pali_list)
