@@ -1,7 +1,7 @@
 """Find anagrams from an input od user in a french dictionnary."""
 
 import sys
-from Collection import Counter
+from collections import Counter
 
 def find_anagrams():
     """Function to get annagram in word list"""
