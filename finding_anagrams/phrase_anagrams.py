@@ -30,11 +30,23 @@ def find_anagrams(name, list_of_words):
 
 def process_choice(name):
     """Function to process choice of user."""
-    condition = True
-    while condition:
+    while True:
         response = input('Enter a word from the list or press Enter to start over or enter # to quit : ')
-        if response != '' and response != '#':
-            candidate = response.lower()
+        if response == '':
+            main()
+        elif response == '#':
+            sys.exit()
+        else:
+            candidate = ''.join(response.lower().split())
+        restin_name_list = list(name)
+        for letter in candidate:
+            if letter in restin_name_list:
+                restin_name_list.remove(letter)
+        if len(name) - len(restin_name_list)== len(candidate):
+            break
+        else print("Please enter an valid choise", file=sys.stderr)
+    name = ''join(restin_name_list)
+    return response, name
 
 def main():
     """
