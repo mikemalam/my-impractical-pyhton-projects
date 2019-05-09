@@ -28,8 +28,13 @@ def find_anagrams(name, list_of_words):
     print("Number of remaining letters = {}".format(len(name)))
     print("Number of remaining (real word) anagrams ) {}".format(len(anagrams_list)))
 
-def process_choice():
+def process_choice(name):
     """Function to process choice of user."""
+    condition = True
+    while condition:
+        response = input('Enter a word from the list or press Enter to start over or enter # to quit : ')
+        if response != '' and response != '#':
+            candidate = response.lower()
 
 def main():
     """
