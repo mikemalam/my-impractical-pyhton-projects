@@ -44,8 +44,9 @@ def process_choice(name):
                 restin_name_list.remove(letter)
         if len(name) - len(restin_name_list)== len(candidate):
             break
-        else print("Please enter an valid choise", file=sys.stderr)
-    name = ''join(restin_name_list)
+        else:
+            print("Please enter an valid choise", file=sys.stderr)
+    name = ''.join(restin_name_list)
     return response, name
 
 def main():
