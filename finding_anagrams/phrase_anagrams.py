@@ -1,12 +1,15 @@
 """Find anagrams from an input od user in a french dictionnary."""
 
-# import sys
+import sys
 from collections import Counter
 import load_dictionnary
 
-dic_file = load_dictionnary.load("./finding-palingram-spells/liste.de.mots.francais.frgut.txt")
-dic_file.append('a', 'n', 'y', 'l', 'm') #add singleword usualy used
-# in french but often mistaken in dictionnary file.
+dic_file = load_dictionnary.load("../finding-palingram-spells/liste.de.mots.francais.frgut.txt")
+dic_file.append('a') #add singleword usualy usedi in french.
+dic_file.append('n')
+dic_file.append('y')
+dic_file.append('l')
+dic_file.append('m')
 dic_file = sorted(dic_file)
 
 ini_name = input("Enter your full name or a word or a phrase : ")
@@ -52,7 +55,38 @@ def process_choice(name):
 def main():
     """
 Main function. Interact with user to choose the best combinations."""
+    name = ''.join(ini_name.lower().split())
+    name.replace('-', '')
+    name.replace(',', '')
+    name.replace('.', '')
+    
+    count_name = len(name)
+    anagram = ''
+    runnning = True
+
+    while runnning:
+        growing_phrase = ''.join(anagram.split())
+        if len(growing_phrase) < count_name:
+            print('{}(s) : length of th anagram.'.format(len(growing_phrase)))
+
+            find_anagrams(name, dic_file)
+            print('Current phrase is =', end=' ')
+            print(anagram, file=sys.stderr)
+
+            choice, name = process_choice(name)
+            anagram += choice + ' '
+
+        elif len(growing_phrase) == count_name:
+            print('\n*****FINISHED!*****\n')
+            print('Your final phrase is : {}'.format(anagram), file=sys.stderr)
+            print()
+            last_choice = input('Do you want to try again ? n')
+            if last_choice.lower() == 'n':
+                runnning = False
+                sys.exit()
+            else:
+                main()
+
 
 if __name__ == "__main__":
     main()
-
